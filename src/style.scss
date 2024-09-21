@@ -26,7 +26,7 @@ $terra--400: #e37b62;
 
 body {
   font-family: "Roboto", sans-serif;
-  line-height: 1.4;
+  line-height: 1.2;
   margin: 0;
   min-height: 100vh;
   display: grid;
@@ -42,12 +42,13 @@ body {
   width: 100%;
   max-width: 1000px;
   background-color: $light;
+  box-shadow: 1px 1px 15px 0px rgba($dark, 0.2);
 
   &__left {
     display: flex;
     gap: 20px 10px;
     flex-wrap: wrap;
-    padding: clamp(35px, 8vw, 60px) clamp(15px, 4vw, 40px) 35px;
+    padding: clamp(35px, 8vw, 70px) clamp(15px, 4vw, 40px) 40px;
     color: $light;
     background-color: $gray--700;
   }
@@ -55,12 +56,12 @@ body {
   &__header {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
-    font-size: clamp(20px, 5vw, 26px);
+    font-size: clamp(22px, 5vw, 30px);
+    line-height: 0.6;
   }
 
   &__title {
-    font-weight: 500;
+    font-weight: 700;
   }
 
   &__subtitle {
@@ -87,17 +88,25 @@ body {
     border-radius: 50%;
     transition: transform 300ms ease-in;
 
+    &::after,
     &::before {
       content: "";
       display: block;
       position: absolute;
       inset: 0;
       border-radius: inherit;
+      transition: opacity 300ms ease-in;
+    }
+
+    &::after {
+      box-shadow: 0px 6px 20px 0px rgba($dark, 0.75);
+    }
+
+    &::before {
       box-shadow: rgba($terra--400, 0.4) 0px 5px,
         rgba($terra--400, 0.3) 0px 10px, rgba($terra--400, 0.2) 0px 15px,
         rgba($terra--400, 0.1) 0px 20px, rgba($terra--400, 0.05) 0px 25px;
       opacity: 0;
-      transition: opacity 300ms ease-in;
     }
 
     img {
@@ -110,6 +119,10 @@ body {
     @media (hover: hover) {
       &:hover {
         transform: translateY(-6px);
+
+        &::after {
+          opacity: 0;
+        }
 
         &::before {
           opacity: 1;
@@ -148,6 +161,7 @@ body {
     font-size: clamp(16px, 4vw, 20px);
     font-weight: 300;
     letter-spacing: 0.03em;
+    line-height: 1.4;
 
     &:first-child {
       &::first-letter {
@@ -162,7 +176,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    padding: clamp(20px, 4vw, 30px) clamp(15px, 4vw, 40px);
+    padding: clamp(20px, 4vw, 28px) clamp(15px, 4vw, 40px);
   }
 
   &__date {
@@ -177,7 +191,7 @@ body {
   &__btn-group {
     display: flex;
     align-items: center;
-    column-gap: 30px;
+    column-gap: 16px;
   }
 
   &__btn {
@@ -185,6 +199,7 @@ body {
     border-radius: 4px;
     background-color: transparent;
     padding: 6px;
+    font-size: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
